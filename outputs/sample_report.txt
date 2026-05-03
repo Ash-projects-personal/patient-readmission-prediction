@@ -1,0 +1,11 @@
+Patient Readmission Risk Report
+===============================
+Risk Score: 0.0%
+Risk Category: LOW
+
+Top Risk Drivers (SHAP):
+- risk_index_composite: value=1.60, impact=-7.4689
+- heart_failure: value=0.00, impact=-0.5240
+- diabetes: value=0.00, impact=-0.2687
+- number_emergency: value=0.00, impact=-0.2665
+- number_inpatient: value=1.00, impact=0.0919
