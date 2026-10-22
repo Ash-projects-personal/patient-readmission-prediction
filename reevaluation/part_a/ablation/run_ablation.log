@@ -1,0 +1,26 @@
+/home/hatch/workspace/projects/readmission-rerun/.venv/lib/python3.12/site-packages/xgboost/core.py:158: UserWarning: [09:26:58] WARNING: /workspace/src/learner.cc:740: 
+Parameters: { "use_label_encoder" } are not used.
+
+  warnings.warn(smsg, UserWarning)
+/home/hatch/workspace/projects/readmission-rerun/part_a/ablation/train_model.py:126: FutureWarning: The NumPy global RNG was seeded by calling `np.random.seed`. In a future version this function will no longer use the global RNG. Pass `rng` explicitly to opt-in to the new behaviour and silence this warning.
+  shap.summary_plot(shap_values, X_sample, show=False)
+Generating 50000 patient records...
+Training XGBoost model...
+Evaluating model...
+
+Results:
+Accuracy: 0.9250
+AUC: 0.9609
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.94      0.97      0.96      8515
+           1       0.79      0.67      0.73      1485
+
+    accuracy                           0.93     10000
+   macro avg       0.87      0.82      0.84     10000
+weighted avg       0.92      0.93      0.92     10000
+
+Generating SHAP explainability plots...
+Done! Outputs saved to 'outputs/' directory.

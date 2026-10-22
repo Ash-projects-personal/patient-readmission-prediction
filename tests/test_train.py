@@ -40,7 +40,7 @@ EXPECTED_COLUMNS = {
     "age", "num_medications", "num_diagnoses", "time_in_hospital",
     "num_lab_procedures", "num_procedures", "number_emergency",
     "number_inpatient", "diabetes", "hypertension", "heart_failure",
-    "risk_index_composite", "readmitted",
+    "readmitted",
 }
 
 
@@ -52,7 +52,7 @@ def small_df() -> "pd.DataFrame":
 
 @pytest.fixture
 def small_csv(tmp_path: Path, small_df: "pd.DataFrame") -> Path:
-    """The fixture frame written to a temporary CSV — exercises the
+    """The fixture frame written to a temporary CSV: exercises the
     'fixture small CSV' path the day-8 bullet specifies."""
     csv = tmp_path / "patients_small.csv"
     small_df.to_csv(csv, index=False)
@@ -136,7 +136,7 @@ def test_model_meets_smoke_floor(small_df: "pd.DataFrame") -> None:
     """A trained model beats trivial constant-prediction accuracy.
 
     The fixture is small, so we keep the floor low (> 80% of the
-    majority-class baseline) — this guards against a regression that
+    majority-class baseline): this guards against a regression that
     swaps features/target or destroys the signal entirely."""
     X = small_df.drop("readmitted", axis=1)
     y = small_df["readmitted"]

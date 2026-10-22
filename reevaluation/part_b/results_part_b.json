@@ -1,0 +1,184 @@
+{
+  "cohort_log": [
+    [
+      "raw rows in diabetic_data.csv",
+      101766
+    ],
+    [
+      "after keeping first encounter per patient",
+      71518
+    ],
+    [
+      "after excluding expired/hospice discharge dispositions (ids 11, 13, 14, 19, 20, 21)",
+      69973
+    ],
+    [
+      "after excluding gender == 'Unknown/Invalid'",
+      69970
+    ],
+    [
+      "final cohort",
+      69970
+    ],
+    [
+      "positive (readmitted <30d)",
+      6277
+    ]
+  ],
+  "n_final": 69970,
+  "n_positive": 6277,
+  "prevalence": 0.08970987566099757,
+  "n_train": 55976,
+  "n_test": 13994,
+  "primary_seed": 42,
+  "models": {
+    "logistic_regression": {
+      "roc_auc": 0.6325887949022864,
+      "roc_auc_ci95": [
+        0.616461010908819,
+        0.6479572152374794
+      ],
+      "pr_auc": 0.15528713479192455,
+      "accuracy_at_0.5": 0.6224096041160497
+    },
+    "gradient_boosting_untuned": {
+      "roc_auc": 0.6497199722776917,
+      "roc_auc_ci95": [
+        0.6329059106379157,
+        0.6651673736014169
+      ],
+      "pr_auc": 0.17744484553135093,
+      "accuracy_at_0.5": 0.9103187080177219
+    },
+    "xgboost_tuned": {
+      "roc_auc": 0.6516786082005179,
+      "roc_auc_ci95": [
+        0.6354131868496337,
+        0.6678151743757039
+      ],
+      "pr_auc": 0.17167002598973974,
+      "accuracy_at_0.5": 0.9096755752465342
+    }
+  },
+  "xgb_best_params": {
+    "learning_rate": 0.05,
+    "max_depth": 3,
+    "min_child_weight": 1,
+    "n_estimators": 500
+  },
+  "xgb_cv_roc_auc": 0.6523180283104574,
+  "calibration": {
+    "slope": 1.0247218608856201,
+    "intercept": -0.07870375365018845,
+    "brier": 0.07946781814098358,
+    "deciles": {
+      "mean_predicted": [
+        0.06971855269324395,
+        0.13290824077462637,
+        0.23830520230338728,
+        0.3347537800982282,
+        0.44156770621027264,
+        0.5259664535522461,
+        0.6198537945747375
+      ],
+      "fraction_positive": [
+        0.061847296356463216,
+        0.11655913978494624,
+        0.23201438848920863,
+        0.3006993006993007,
+        0.5714285714285714,
+        0.2,
+        0.0
+      ]
+    }
+  },
+  "shap_top15": [
+    {
+      "feature": "cat__discharge_disposition_id_1",
+      "mean_abs_shap": 0.26118820905685425
+    },
+    {
+      "feature": "cat__gender_Male",
+      "mean_abs_shap": 0.23993122577667236
+    },
+    {
+      "feature": "cat__gender_Female",
+      "mean_abs_shap": 0.2216852307319641
+    },
+    {
+      "feature": "num__number_inpatient",
+      "mean_abs_shap": 0.15874557197093964
+    },
+    {
+      "feature": "cat__diabetesMed_Yes",
+      "mean_abs_shap": 0.1299743354320526
+    },
+    {
+      "feature": "cat__diag_3_group_Other",
+      "mean_abs_shap": 0.12895706295967102
+    },
+    {
+      "feature": "cat__medical_specialty_Missing",
+      "mean_abs_shap": 0.12509861588478088
+    },
+    {
+      "feature": "cat__diag_3_group_Circulatory",
+      "mean_abs_shap": 0.11696077138185501
+    },
+    {
+      "feature": "cat__payer_code_Missing",
+      "mean_abs_shap": 0.11157501488924026
+    },
+    {
+      "feature": "cat__diag_2_group_Circulatory",
+      "mean_abs_shap": 0.09679659456014633
+    },
+    {
+      "feature": "cat__change_No",
+      "mean_abs_shap": 0.09294045716524124
+    },
+    {
+      "feature": "cat__insulin_Steady",
+      "mean_abs_shap": 0.0902220830321312
+    },
+    {
+      "feature": "cat__diag_2_group_Other",
+      "mean_abs_shap": 0.08754624426364899
+    },
+    {
+      "feature": "cat__diag_1_group_Circulatory",
+      "mean_abs_shap": 0.08302734047174454
+    },
+    {
+      "feature": "cat__metformin_No",
+      "mean_abs_shap": 0.08084510266780853
+    }
+  ],
+  "seed_sensitivity": {
+    "runs": [
+      {
+        "seed": 101,
+        "roc_auc": 0.6623192459694306,
+        "pr_auc": 0.1734005530538088,
+        "n_test": 13994
+      },
+      {
+        "seed": 202,
+        "roc_auc": 0.6590216704776157,
+        "pr_auc": 0.17606856816538663,
+        "n_test": 13994
+      },
+      {
+        "seed": 303,
+        "roc_auc": 0.6538501002733992,
+        "pr_auc": 0.17836786449491085,
+        "n_test": 13994
+      }
+    ],
+    "roc_auc_min": 0.6538501002733992,
+    "roc_auc_max": 0.6623192459694306,
+    "roc_auc_mean": 0.6583970055734819,
+    "roc_auc_sd": 0.0034856144257021404,
+    "note": "Split, SMOTE and model seeds varied; hyperparameters fixed at the values tuned in the primary run."
+  }
+}

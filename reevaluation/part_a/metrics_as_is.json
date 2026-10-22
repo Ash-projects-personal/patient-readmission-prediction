@@ -1,0 +1,21 @@
+{
+  "variant": "as_is",
+  "n_rows": 50000,
+  "features": [
+    "age",
+    "num_medications",
+    "num_diagnoses",
+    "time_in_hospital",
+    "num_lab_procedures",
+    "num_procedures",
+    "number_emergency",
+    "number_inpatient",
+    "diabetes",
+    "hypertension",
+    "heart_failure",
+    "risk_index_composite"
+  ],
+  "test_accuracy": 0.9982,
+  "test_roc_auc": 0.9999886118970088,
+  "test_pr_auc": 0.9999350630985571
+}

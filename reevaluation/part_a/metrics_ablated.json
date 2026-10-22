@@ -1,0 +1,20 @@
+{
+  "variant": "ablated",
+  "n_rows": 50000,
+  "features": [
+    "age",
+    "num_medications",
+    "num_diagnoses",
+    "time_in_hospital",
+    "num_lab_procedures",
+    "num_procedures",
+    "number_emergency",
+    "number_inpatient",
+    "diabetes",
+    "hypertension",
+    "heart_failure"
+  ],
+  "test_accuracy": 0.925,
+  "test_roc_auc": 0.9609435517832464,
+  "test_pr_auc": 0.8314662922973227
+}

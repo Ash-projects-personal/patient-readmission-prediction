@@ -1,0 +1,37 @@
+Cohort flow:
+  raw rows in diabetic_data.csv: 101766
+  after keeping first encounter per patient: 71518
+  after excluding expired/hospice discharge dispositions (ids 11, 13, 14, 19, 20, 21): 69973
+  after excluding gender == 'Unknown/Invalid': 69970
+  final cohort: 69970
+  positive (readmitted <30d): 6277
+  prevalence: 0.0897
+train rows: 55976 (pos 5017), test rows: 13994 (pos 1260)
+logistic_regression: ROC-AUC 0.6326 (95% CI 0.6165-0.6480), PR-AUC 0.1553, acc 0.6224
+gradient_boosting_untuned: ROC-AUC 0.6497 (95% CI 0.6329-0.6652), PR-AUC 0.1774, acc 0.9103
+best CV ROC-AUC: 0.6523
+best params: {'model__learning_rate': 0.05, 'model__max_depth': 3, 'model__min_child_weight': 1, 'model__n_estimators': 500}
+xgboost_tuned: ROC-AUC 0.6517 (95% CI 0.6354-0.6678), PR-AUC 0.1717, acc 0.9097
+calibration: slope 1.025, intercept -0.079, Brier 0.0795
+SHAP top 15:
+  cat__discharge_disposition_id_1: 0.2612
+  cat__gender_Male: 0.2399
+  cat__gender_Female: 0.2217
+  num__number_inpatient: 0.1587
+  cat__diabetesMed_Yes: 0.1300
+  cat__diag_3_group_Other: 0.1290
+  cat__medical_specialty_Missing: 0.1251
+  cat__diag_3_group_Circulatory: 0.1170
+  cat__payer_code_Missing: 0.1116
+  cat__diag_2_group_Circulatory: 0.0968
+  cat__change_No: 0.0929
+  cat__insulin_Steady: 0.0902
+  cat__diag_2_group_Other: 0.0875
+  cat__diag_1_group_Circulatory: 0.0830
+  cat__metformin_No: 0.0808
+seed 101: test ROC-AUC 0.6623
+seed 202: test ROC-AUC 0.6590
+seed 303: test ROC-AUC 0.6539
+
+Wrote /home/hatch/workspace/projects/readmission-rerun/part_b/results_part_b.json
+EXIT=0
